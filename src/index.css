@@ -1,0 +1,82 @@
+/* Add your CSS styles for the website here */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.book {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* Add your CSS styles for the website here */
+/* ... (previous styles) */
+
+.book.show-details {
+    height: auto;
+    padding: 10px;
+    margin: 10px;
+    overflow: hidden;
+    transition: height 0.3s;
+}
+
+.book.show-details h3 {
+    margin-bottom: 5px;
+}
+
+.book.show-details button {
+    margin-top: 10px;
+}
+
+/* ... (rest of the styles) */
+
+
+.cart {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cart:hover {
+    background-color: #218838;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
