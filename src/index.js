@@ -16,6 +16,7 @@ const books = [
 const cart = [];
 let cartHidden = true; // Variable to track cart visibility
 
+// Function to display books
 function displayBooks() {
     const booksContainer = document.getElementById("books");
     booksContainer.innerHTML = "";
@@ -44,6 +45,7 @@ function displayBooks() {
     }
 }
 
+// Function to handle user actions
 function handleUserAction(action, index) {
     switch (action) {
         case 'view':
@@ -66,6 +68,7 @@ function handleUserAction(action, index) {
     }
 }
 
+// Function to toggle book details visibility
 function toggleBookDetails(index) {
     const bookDetails = document.querySelector(`#book-${index} .book-details`);
     const author = document.querySelector(`#book-${index} .author`);
@@ -84,6 +87,7 @@ function toggleBookDetails(index) {
     }
 }
 
+// Function to add a book to the cart
 function addToCart(index) {
     const book = books[index];
     try {
@@ -101,6 +105,7 @@ function addToCart(index) {
     }
 }
 
+// Function to display the cart
 function displayCart() {
     const cartContainer = document.getElementById("cart");
     cartContainer.innerHTML = "";
@@ -119,7 +124,7 @@ function displayCart() {
     cartContainer.appendChild(totalPriceElement);
 }
 
-
+// Function to handle the checkout process
 function checkout() {
     if (cart.length === 0) {
         alert("Your cart is empty. Please add books to your cart before checking out.");
@@ -130,11 +135,13 @@ function checkout() {
     }
 }
 
+// Function to clear the cart
 function clearCart() {
     cart.length = 0; // Clear the cart
     displayCart();
 }
 
+// Function to toggle the cart visibility
 function toggleCart() {
     const cartContainer = document.getElementById("cart");
     cartContainer.classList.toggle("hidden");
@@ -143,4 +150,35 @@ function toggleCart() {
     cartButton.textContent = cartHidden ? 'View Cart' : 'Hide Cart';
 }
 
+// Function to add a book to the store
+function addBookToStore() {
+    try {
+        // Prompt the user for book details
+        const title = prompt("Enter the book title:");
+        const author = prompt("Enter the author:");
+        const price = parseFloat(prompt("Enter the price:"));
+        const stockQuantity = parseInt(prompt("Enter the stock quantity:"));
+
+        // Validate the input
+        if (!title || !author || isNaN(price) || isNaN(stockQuantity) || price <= 0 || stockQuantity < 0) {
+            throw new Error("Invalid input. Please enter valid book details.");
+        }
+
+        // Create a new book object and add it to the store
+        const newBook = new Book(title, author, price, stockQuantity);
+        books.push(newBook);
+        displayBooks();
+        alert("Book added to the store successfully.");
+    } catch (error) {
+        alert(error.message);
+    } finally {
+        // Clean up or perform final actions if needed
+    }
+}
+
+// Add an event listener for the "Add Book" button
+const addBookButton = document.getElementById("addBookButton");
+addBookButton.addEventListener("click", addBookToStore);
+
+// Display initial books
 displayBooks();

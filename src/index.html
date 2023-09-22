@@ -15,16 +15,17 @@
     </div>
     <div class="container">
         <h2>Books</h2>
+        <button id="addBookButton" onclick="addBookToStore()">Add Book</button>
         <div id="books"></div>
         <h2>Cart</h2>
         <div id="cart">
             <div id="cart-items"></div>
             <div id="total-price"></div>
-            <button id="checkoutButton" onclick="handleUserAction('checkout')">Checkout</button>
-            <button id="clearCartButton" onclick="handleUserAction('clearCart')">Clear Cart</button>
         </div>
+        <button id="cartButton" onclick="handleUserAction('toggleCart')">View Cart</button>
+        <button id="clearCartButton" onclick="handleUserAction('clearCart')">Clear Cart</button>
         <div class="actions">
-            <button id="cartButton" onclick="handleUserAction('toggleCart')">View Cart</button>
+            <button id="checkoutButton" onclick="handleUserAction('checkout')">Checkout</button>
         </div>
     </div>
     <script src="index.js"></script>
