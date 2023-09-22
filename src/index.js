@@ -94,6 +94,7 @@ function addToCart(index) {
         if (book.stockQuantity > 0) {
             cart.push(book);
             book.stockQuantity--;
+            displayBooks();
             displayCart();
         } else {
             throw new Error("Sorry, this book is out of stock.");
@@ -104,6 +105,7 @@ function addToCart(index) {
         // Clean up or perform final actions if needed
     }
 }
+
 
 // Function to display the cart
 function displayCart() {
