@@ -14,7 +14,7 @@ const books = [
 ];
 
 const cart = [];
-let cartVisible = false;
+let cartHidden = true; // Variable to track cart visibility
 
 function displayBooks() {
     const booksContainer = document.getElementById("books");
@@ -25,17 +25,23 @@ function displayBooks() {
         bookElement.classList.add("book");
         bookElement.setAttribute("id", `book-${index}`);
         bookElement.innerHTML = `
-            <div class="book-details hidden">
-                <p>Title: ${book.title}</p>
-                <p>Author: ${book.author}</p>
-                <p>Price: $${book.price}</p>
-                <p>Stock Quantity: ${book.stockQuantity}</p>
+            <div class="book-details">
+                <p><strong>Title:</strong> ${book.title}</p>
+                <p class="author hidden"><strong>Author:</strong> ${book.author}</p>
+                <p class="price hidden"><strong>Price:</strong> $${book.price}</p>
+                <p class="stock hidden"><strong>Stock Quantity:</strong> ${book.stockQuantity}</p>
             </div>
             <button onclick="toggleBookDetails(${index})">View Book Details</button>
             <button onclick="handleUserAction('add', ${index})" ${book.stockQuantity === 0 ? 'disabled' : ''}>Add to Cart</button>
         `;
         booksContainer.appendChild(bookElement);
     });
+
+    // Check if the cart should be hidden initially
+    if (cartHidden) {
+        const cartContainer = document.getElementById("cart");
+        cartContainer.classList.add("hidden");
+    }
 }
 
 function handleUserAction(action, index) {
@@ -59,9 +65,20 @@ function handleUserAction(action, index) {
 
 function toggleBookDetails(index) {
     const bookDetails = document.querySelector(`#book-${index} .book-details`);
+    const author = document.querySelector(`#book-${index} .author`);
+    const price = document.querySelector(`#book-${index} .price`);
+    const stock = document.querySelector(`#book-${index} .stock`);
     const button = document.querySelector(`#book-${index} button`);
-    bookDetails.classList.toggle("hidden");
-    button.textContent = bookDetails.classList.contains("hidden") ? "View Book Details" : "Hide Book Details";
+
+    author.classList.toggle("hidden");
+    price.classList.toggle("hidden");
+    stock.classList.toggle("hidden");
+
+    if (author.classList.contains("hidden")) {
+        button.textContent = "View Book Details";
+    } else {
+        button.textContent = "Hide Book Details";
+    }
 }
 
 function addToCart(index) {
@@ -71,7 +88,6 @@ function addToCart(index) {
             cart.push(book);
             book.stockQuantity--;
             displayCart();
-            displayBooks();
         } else {
             throw new Error("Sorry, this book is out of stock.");
         }
@@ -90,15 +106,16 @@ function displayCart() {
 
     cart.forEach((book) => {
         const cartItem = document.createElement("div");
-        cartItem.innerHTML = `${book.title} - $${book.price}`;
+        cartItem.innerHTML = `<strong>${book.title}</strong> - $${book.price}`;
         cartContainer.appendChild(cartItem);
         totalPrice += book.price;
     });
 
     const totalPriceElement = document.createElement("div");
-    totalPriceElement.innerHTML = `Total Price: $${totalPrice.toFixed(2)}`;
+    totalPriceElement.innerHTML = `<strong>Total Price: $${totalPrice.toFixed(2)}</strong>`;
     cartContainer.appendChild(totalPriceElement);
 }
+
 
 function checkout() {
     if (cart.length === 0) {
@@ -113,9 +130,9 @@ function checkout() {
 function toggleCart() {
     const cartContainer = document.getElementById("cart");
     cartContainer.classList.toggle("hidden");
-    cartVisible = !cartVisible;
+    cartHidden = !cartHidden; // Update cartHidden variable
     const cartButton = document.getElementById("cartButton");
-    cartButton.textContent = cartVisible ? 'Hide Cart' : 'View Cart';
+    cartButton.textContent = cartHidden ? 'View Cart' : 'Hide Cart';
 }
 
 displayBooks();
