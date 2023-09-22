@@ -17,7 +17,12 @@
         <h2>Books</h2>
         <div id="books"></div>
         <h2>Cart</h2>
-        <div id="cart"></div>
+        <div id="cart">
+            <div id="cart-items"></div>
+            <div id="total-price"></div>
+            <button id="checkoutButton" onclick="handleUserAction('checkout')">Checkout</button>
+            <button id="clearCartButton" onclick="handleUserAction('clearCart')">Clear Cart</button>
+        </div>
         <div class="actions">
             <button id="cartButton" onclick="handleUserAction('toggleCart')">View Cart</button>
         </div>

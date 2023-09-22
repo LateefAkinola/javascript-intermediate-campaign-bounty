@@ -55,6 +55,9 @@ function handleUserAction(action, index) {
         case 'checkout':
             checkout();
             break;
+        case 'clearCart':
+            clearCart();
+            break;        
         case 'toggleCart':
             toggleCart();
             break;
@@ -125,6 +128,11 @@ function checkout() {
         cart.length = 0; // Clear the cart after checkout
         displayCart();
     }
+}
+
+function clearCart() {
+    cart.length = 0; // Clear the cart
+    displayCart();
 }
 
 function toggleCart() {
