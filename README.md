@@ -1,4 +1,5 @@
-# JavaScript Code Explanation
+# LATINO'S ONLINE BOOKSTORE: JavaScript Code Explanation
+![Screenshot (422)](https://github.com/LateefAkinola/javascript-intermediate-campaign-bounty/assets/105966848/3b41d88e-f78c-4e28-a751-90886b9d5c28)
 
 In this Markdown file, we'll provide a step-by-step and detailed explanation of the provided JavaScript code for a simple online bookstore application. The code allows users to view books, add them to a cart, check out, and perform various actions.
 
