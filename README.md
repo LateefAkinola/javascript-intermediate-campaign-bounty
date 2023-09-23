@@ -316,6 +316,8 @@ This JavaScript code represents a simple online bookstore application. Users can
 
 #### Handling Errors with `try-catch-finally`
 
+The `try-catch-finally` structure handles potential errors, informs the user of any issues, and keeps the UI up-to-date.
+
 In the `addBookToStore()` function, a `try` block contains code that gathers and validates user input for adding a book to the store. If any validation fails, an error is thrown.
 
 ##### `try` Block
@@ -335,9 +337,6 @@ In the `addBookToStore()` function, a `try` block contains code that gathers and
 - The `finally` block contains code that always runs, whether there's an error or not.
 
 - It ensures the displayed book list is updated using `displayBooks()` to reflect any changes in the inventory.
-
-The `try-catch-finally` structure handles potential errors, informs the user of any issues, and keeps the UI up-to-date.
-
 
     ```javascript
     function addBookToStore() {
